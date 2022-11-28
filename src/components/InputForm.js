@@ -4,7 +4,7 @@ import { TaskContext } from "../context/TaskContext";
 const InputForm = () => {
 
 
-    const {addTask} = useContext(TaskContext);
+    const { addTask } = useContext(TaskContext);
 
     const [titulo, setTitulo] = useState("");
     const [tarea, setTarea] = useState("");
@@ -23,7 +23,7 @@ const InputForm = () => {
             tarea: tarea,
             id: crypto.randomUUID()
         }
-        console.log(objTarea);
+
         addTask(objTarea);
 
     }
@@ -31,10 +31,11 @@ const InputForm = () => {
     return (
         <form className="formContainer">
 
-            <h2>Ingrese la tarea a realizar aqui:</h2>
-            <input type="text" placeholder="Titulo" onChange={handleTitulo}></input>
-            <textarea style={{ height: "300px", resize: "none" }} onChange={handleTarea} ></textarea>
-            <button onClick={cargarTarea}> Agregar </button>
+            <p className="formTitle">Ingrese la tarea a realizar aqui</p>
+            <i class="bi bi-arrow-down-square-fill arrowForm" style={{fontSize: "2.5rem"}}></i>
+            <input className="tituloForm" type="text" placeholder="Titulo" onChange={handleTitulo}></input>
+            <textarea className="areaForm" style={{ height: "300px", resize: "none" }} onChange={handleTarea} ></textarea>
+            <button className="btn btn-success" onClick={cargarTarea}> Agregar </button>
 
         </form>
     )
