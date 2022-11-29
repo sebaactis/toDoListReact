@@ -3,7 +3,7 @@ import TaskList from "./TaskList"
 
 const MainContainer = () => {
   return (
-    <div className="container-fluid mainContenedor">
+    <div className=" container-fluid mainContenedor">
 
     <InputForm />
     <TaskList />

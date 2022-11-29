@@ -4,30 +4,32 @@ import { TaskContext } from '../context/TaskContext';
 
 const TaskList = () => {
 
-  const { taskList, deteleAll, deteleTask } = useContext(TaskContext);
+  const { taskList, deleteAll, deleteTask, addCheck } = useContext(TaskContext);
 
   return (
 
+
+
     taskList.length === 0
       ?
-      <p className="nothingTask">No hay nada ingresado </p>
+       <p className="nothingTask">  <i className="bi bi-shield-x" ></i> No tienes notas ingresadas hasta el momento <i className="bi bi-shield-x"></i> </p>
       :
-      <div className="allTasksConteiner">
+      <div className="allTasksContainer">
         {
           taskList.map((task) => {
             return (
-              <div className="taskConteiner" key={task.id}>
-                <h2 className="tituloTask">{task.titulo}</h2>
+              <div key={task.id}>
+                <h3 className="tituloTask">{task.titulo}</h3>
                 <p className="areaTask">{task.tarea}</p>
                 <div className="buttons">
-                  <button style={{ margin: "0 1rem" }} className="btn btn-danger" onClick={() => deteleTask(task.id)}><i class="bi bi-x-circle-fill"></i></button>
-                  <button className="btn btn-success" onClick={() => deteleTask(task.id)}><i class="bi bi-check-circle-fill"></i></button>
+                  <button style={{ margin: "0 1rem" }} className="btn btn-danger" onClick={() => deleteTask(task.id)}><i className="bi bi-x-circle-fill"></i></button>
+                  <button className="btn btn-success" onClick={() => addCheck(task, task.id)}><i className="bi bi-check-circle-fill"></i></button>
                 </div>
               </div>
             )
           })
         }
-        <button className="btn btn-danger" onClick={deteleAll}> Eliminar todas las tareas </button>
+        <button className="btn btn-danger" onClick={deleteAll}> Eliminar todas las tareas </button>
       </div>
   )
 }

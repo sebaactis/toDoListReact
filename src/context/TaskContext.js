@@ -6,23 +6,41 @@ const TaskProvider = ({ children }) => {
 
 
     const [taskList, setTaskList] = useState([]);
+    const [check, setCheck] = useState([]);
+
+
+
 
     const addTask = (task) => {
-        setTaskList([...taskList, task])    
+        setTaskList([...taskList, task])
     }
 
-    const deteleTask = (id) => {
+
+    const addCheck = (task, id) => {
+        setCheck([...check, task])
+        deleteTask(id);
+    }
+
+    const deleteTask = (id) => {
         setTaskList(taskList.filter((task) => task.id !== id))
     }
 
-    const deteleAll = () => {
+    const deleteAll = () => {
         setTaskList([]);
     }
 
-    console.log(taskList);
+    const deleteAllChecks = () => {
+        setCheck([]);
+    }
+
+    const deleteCheck = (id) => {
+        setCheck(check.filter((task) => task.id !== id))
+    }
+
+    console.log(check);
 
     return (
-        <TaskContext.Provider value={{addTask, taskList, deteleAll, deteleTask}}>
+        <TaskContext.Provider value={{ addTask, taskList, deleteAll, deleteTask, addCheck, check, deleteCheck, deleteAllChecks }}>
 
             {children}
 
